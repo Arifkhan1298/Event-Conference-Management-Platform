@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EVENTORA — International Event & Conference Management Platform</title>
+  <meta name="description" content="World-class international event and conference management SaaS platform. Discover global tech summits, reserve tickets, network with leaders, and orchestrate conferences seamlessly." />
+  
+  <!-- Google Fonts: Plus Jakarta Sans, Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Main Stylesheet (Directly in root) -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========================================================================
+       STICKY GLASS NAVIGATION
+       ======================================================================== -->
+  <header class="navbar" id="main-navbar">
+    <div class="container-wide nav-container">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" onclick="location.reload()">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <span>EVENTORA</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#discovery-section" class="nav-link">Events</a></li>
+          <li><a href="#featured-section" class="nav-link">Conferences</a></li>
+          <li><a href="#schedule-section" class="nav-link">Schedule</a></li>
+          <li><a href="#speakers-section" class="nav-link">Speakers</a></li>
+          <li><a href="#networking-section" class="nav-link">Networking</a></li>
+          <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
+          <li><a href="#about-section" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Side Actions -->
+      <div class="nav-actions">
+        <!-- Global Search Trigger -->
+        <button class="btn-icon" id="nav-search-btn" title="Search events, speakers, sessions (/)" aria-label="Global search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- Notification Bell -->
+        <div style="position: relative;">
+          <button class="btn-icon" id="nav-notif-btn" title="Notifications" aria-label="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span class="notif-badge-count" id="notif-badge-count">2</span>
+          </button>
+
+          <!-- Notification Dropdown -->
+          <div class="notif-dropdown" id="notif-dropdown">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <span style="font-weight: 700; font-size: 0.875rem;">Notifications</span>
+              <span style="font-size: 0.75rem; color: #60a5fa; cursor: pointer;">Mark all as read</span>
+            </div>
+            <div id="notif-items-list">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Auth Button -->
+        <button class="btn btn-secondary btn-sm btn-open-auth">
+          Sign In
+        </button>
+
+        <!-- Create Event Premium CTA -->
+        <button class="btn btn-primary btn-sm btn-open-create-event">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Create Event</span>
+        </button>
+
+        <!-- Mobile Drawer Toggle -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-menu-drawer" style="display: none; position: fixed; top: 70px; left: 0; right: 0; background: rgba(8, 12, 22, 0.98); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; z-index: 999;">
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <a href="#discovery-section" class="nav-link" onclick="document.getElementById('mobile-menu-drawer').style.display='none'">Explore Events</a>
+      <a href="#schedule-section" class="nav-link" onclick="document.getElementById('mobile-menu-drawer').style.display='none'">Conference Schedule</a>
+      <a href="#speakers-section" class="nav-link" onclick="document.getElementById('mobile-menu-drawer').style.display='none'">Global Speakers</a>
+      <a href="#networking-section" class="nav-link" onclick="document.getElementById('mobile-menu-drawer').style.display='none'">Attendee Networking</a>
+      <a href="#pricing-section" class="nav-link" onclick="document.getElementById('mobile-menu-drawer').style.display='none'">Organizer Pricing</a>
+      <button class="btn btn-primary btn-open-create-event" style="width: 100%; margin-top: 0.5rem;">+ Create Event</button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MAIN PUBLIC PORTAL VIEW
+       ======================================================================== -->
+  <main id="public-view">
+    
+    <!-- --- HERO SECTION --- -->
+    <section class="hero" id="hero">
+      <div class="hero-glow-1"></div>
+      
+      <div class="container hero-content">
+        <div class="section-tag" style="margin-bottom: 1.5rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span>The Next Generation of Global Event Technology</span>
+        </div>
+
+        <h1 class="hero-headline">
+          Where <span class="text-gradient">Extraordinary Events</span><br />
+          Come Together.
+        </h1>
+
+        <p class="hero-subtext">
+          Discover unforgettable conferences, connect with industry leaders, manage registrations, and create experiences that people remember.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#discovery-section" class="btn btn-primary btn-lg">
+            <span>Explore Events</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+
+          <button class="btn btn-secondary btn-lg btn-open-create-event">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="16"></line>
+              <line x1="8" y1="12" x2="16" y2="12"></line>
+            </svg>
+            <span>Create an Event</span>
+          </button>
+
+          <button class="btn btn-outline btn-lg" onclick="document.getElementById('demo-video-modal').classList.add('active')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Watch Demo</span>
+          </button>
+        </div>
+
+        <!-- Live Platform Metrics Pill -->
+        <div class="hero-stats-strip">
+          <div class="stat-item">
+            <div class="stat-number">12K+</div>
+            <div class="stat-label">Events<br />Hosted</div>
+          </div>
+          <div style="height: 28px; width: 1px; background: rgba(255,255,255,0.1);"></div>
+          <div class="stat-item">
+            <div class="stat-number">850K+</div>
+            <div class="stat-label">Active<br />Attendees</div>
+          </div>
+          <div style="height: 28px; width: 1px; background: rgba(255,255,255,0.1);"></div>
+          <div class="stat-item">
+            <div class="stat-number">120+</div>
+            <div class="stat-label">Global<br />Countries</div>
+          </div>
+          <div style="height: 28px; width: 1px; background: rgba(255,255,255,0.1);"></div>
+          <div class="stat-item">
+            <div class="stat-number" style="color: #34d399;">99.9%</div>
+            <div class="stat-label">Platform<br />Uptime</div>
+          </div>
+        </div>
+
+        <!-- Cinematic Dashboard Preview Mockup with Floating Badges -->
+        <div class="hero-mockup-wrap">
+          <div class="hero-mockup">
+            <div class="mockup-header">
+              <div class="mockup-dots">
+                <span class="dot-red"></span>
+                <span class="dot-yellow"></span>
+                <span class="dot-green"></span>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-faint);">eventora.io/summit/nexus-2026/live</div>
+              <div style="display: flex; gap: 0.5rem;">
+                <span class="badge badge-emerald" style="font-size: 0.65rem;">● 4,820 ONLINE</span>
+              </div>
+            </div>
+
+            <div class="mockup-preview-grid">
+              <!-- Mock Sidebar -->
+              <div style="background: rgba(0,0,0,0.3); border-radius: var(--radius-md); padding: 1.2rem; text-align: left;">
+                <div style="font-size: 0.75rem; color: var(--text-faint); margin-bottom: 0.8rem; text-transform: uppercase;">Live Stage Feed</div>
+                <div style="height: 100px; border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 1rem; position: relative;">
+                  <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=400&q=80" style="width: 100%; height: 100%; object-fit: cover;" />
+                  <span class="badge badge-blue" style="position: absolute; bottom: 6px; left: 6px; font-size: 0.65rem;">Plenary Hall</span>
+                </div>
+                <div style="font-size: 0.813rem; font-weight: 700; margin-bottom: 0.2rem;">Next-Gen Reasoning Models</div>
+                <div style="font-size: 0.7rem; color: var(--text-muted);">Dr. Elena Vance • Cognitive Frontier</div>
+              </div>
+
+              <!-- Mock Main Panel -->
+              <div style="background: rgba(0,0,0,0.2); border-radius: var(--radius-md); padding: 1.2rem; text-align: left;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                  <span style="font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;">Interactive Session Agenda</span>
+                  <span class="badge badge-purple">AI & Robotics Track</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+                  <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 0.7rem 1rem; border-radius: var(--radius-sm); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-size: 0.813rem; font-weight: 600;">Opening Plenary: Autonomous Compute</div>
+                      <div style="font-size: 0.7rem; color: var(--text-muted);">09:00 AM PST • Main Auditorium</div>
+                    </div>
+                    <span class="badge badge-emerald" style="font-size: 0.7rem;">In Progress</span>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 0.7rem 1rem; border-radius: var(--radius-sm); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-size: 0.813rem; font-weight: 600;">High-Throughput Rust for Financial Systems</div>
+                      <div style="font-size: 0.7rem; color: var(--text-muted);">01:30 PM PST • Workshop Lab B</div>
+                    </div>
+                    <span class="badge badge-blue" style="font-size: 0.7rem;">Upcoming</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Badge 1 -->
+            <div class="floating-badge floating-badge-1">
+              <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--grad-primary); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem;">
+                VIP
+              </div>
+              <div style="text-align: left;">
+                <div style="font-size: 0.813rem; font-weight: 700;">Sarah J. Reserved Pass</div>
+                <div style="font-size: 0.7rem; color: #34d399;">VIP Executive • 2m ago</div>
+              </div>
+            </div>
+
+            <!-- Floating Badge 2 -->
+            <div class="floating-badge floating-badge-2">
+              <div style="font-size: 1.5rem;">⚡</div>
+              <div style="text-align: left;">
+                <div style="font-size: 0.813rem; font-weight: 700;">Tokyo Nexus Summit</div>
+                <div style="font-size: 0.7rem; color: #60a5fa;">98% Ticket Capacity Sold</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --- FEATURED EVENTS CAROUSEL --- -->
+    <section class="featured-section" id="featured-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Curated Summits</div>
+          <h2 class="section-title">Featured World Conferences</h2>
+          <p class="section-desc">Handpicked flagship gatherings bringing together global innovators, investors, and technical visionaries.</p>
+        </div>
+
+        <div class="carousel-container">
+          <div class="carousel-track" id="carousel-track">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem;">
+          <div class="carousel-dots" id="carousel-dots">
+            <!-- Dots populated via JS -->
+          </div>
+          <div class="carousel-nav-arrows">
+            <button class="btn-icon" id="carousel-prev" title="Previous event" aria-label="Previous">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button class="btn-icon" id="carousel-next" title="Next event" aria-label="Next">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- EVENT DISCOVERY & ADVANCED FILTERS --- -->
+    <section class="discovery-section" id="discovery-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Global Directory</div>
+          <h2 class="section-title">Discover Unforgettable Events</h2>
+          <p class="section-desc">Search hundreds of premier summits, masterclasses, and executive meetups worldwide.</p>
+        </div>
+
+        <!-- Filter Bar Wrapper -->
+        <div class="filter-bar-wrapper">
+          <!-- Search Bar -->
+          <div class="search-input-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="event-search-input" placeholder="Search by conference name, keynote topic, host, or city..." />
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-faint); background: rgba(255,255,255,0.08); padding: 0.2rem 0.5rem; border-radius: 4px;">/</span>
+          </div>
+
+          <!-- Filter Selects -->
+          <div class="filter-controls-row">
+            <div class="filter-select-group">
+              <select class="custom-select" id="format-select">
+                <option value="all">All Formats (In-Person & Online)</option>
+                <option value="In-Person">In-Person Only</option>
+                <option value="Online">Virtual / Online Only</option>
+                <option value="Hybrid">Hybrid Access</option>
+              </select>
+
+              <select class="custom-select" id="sort-select">
+                <option value="popularity">Sort by: Most Popular</option>
+                <option value="date">Sort by: Upcoming Date</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+              </select>
+            </div>
+
+            <div id="events-count-display" style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500;">
+              Showing 8 international events
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Pills -->
+        <div class="category-pills-wrap" id="category-pills-container">
+          <!-- Populated via JS -->
+        </div>
+
+        <!-- Events Grid -->
+        <div class="events-grid" id="events-grid">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- --- INTERACTIVE CONFERENCE SCHEDULE --- -->
+    <section class="schedule-section" id="schedule-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Interactive Agenda</div>
+          <h2 class="section-title">Conference Timeline & Tracks</h2>
+          <p class="section-desc">Plan your summit experience across multi-day stages. Bookmark sessions directly to your personal attendee schedule.</p>
+        </div>
+
+        <!-- Day Selector Tabs -->
+        <div class="schedule-tabs-wrap" id="schedule-tabs-container">
+          <!-- Populated via JS -->
+        </div>
+
+        <!-- Timeline Items Container -->
+        <div class="timeline-container" id="schedule-timeline-container">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- --- SPEAKERS DIRECTORY --- -->
+    <section class="speakers-section" id="speakers-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Distinguished Faculty</div>
+          <h2 class="section-title">World-Class Keynote Speakers</h2>
+          <p class="section-desc">Learn from pioneering artificial intelligence researchers, Fortune 500 executives, and breakthrough scientists.</p>
+        </div>
+
+        <!-- Speaker Filter Tabs -->
+        <div class="speakers-filter-tabs" id="speakers-tabs-container">
+          <!-- Populated via JS -->
+        </div>
+
+        <!-- Speakers Grid -->
+        <div class="speakers-grid" id="speakers-container">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- --- ATTENDEE NETWORKING & MATCHMAKING --- -->
+    <section class="networking-section" id="networking-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Smart Matchmaking</div>
+          <h2 class="section-title">Connect With Industry Peers</h2>
+          <p class="section-desc">Eventora's algorithmic matchmaking matches you with delegates, investors, and potential partners sharing mutual objectives.</p>
+        </div>
+
+        <div class="networking-grid" id="networking-container">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- --- SAAS ORGANIZER PRICING --- -->
+    <section class="pricing-section" id="pricing-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Organizer Plans</div>
+          <h2 class="section-title">Transparent SaaS Pricing</h2>
+          <p class="section-desc">Everything you need to host world-class international summits, sell multi-tier passes, and manage smart check-ins.</p>
+        </div>
+
+        <!-- Billing Period Switcher -->
+        <div class="pricing-toggle-wrap">
+          <span style="font-size: 0.875rem; color: var(--text-muted); font-weight: 600;">Monthly Billing</span>
+          <div class="pricing-toggle-btn">
+            <button class="toggle-opt active" data-billing="monthly">Monthly</button>
+            <button class="toggle-opt" data-billing="annual">Annual (Save 20%)</button>
+          </div>
+          <span class="badge badge-emerald">20% Discount</span>
+        </div>
+
+        <!-- Pricing Cards Grid -->
+        <div class="pricing-grid">
+          <!-- Free Plan -->
+          <div class="pricing-card" data-monthly="0" data-annual="0">
+            <h3 style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;">Starter</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.3rem;">For community meetups and inaugural workshops.</p>
+            <div class="pricing-price">$0<span>/month</span></div>
+            <ul class="pricing-features-list">
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>1 Active Event per year</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Up to 100 Free Registrations</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Basic Registration Form</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Standard Email Confirmations</span>
+              </li>
+            </ul>
+            <button class="btn btn-secondary btn-open-auth" style="width: 100%;">Get Started Free</button>
+          </div>
+
+          <!-- Pro Plan (Featured) -->
+          <div class="pricing-card featured" data-monthly="79" data-annual="63">
+            <div class="pricing-badge-popular">MOST POPULAR FOR CONFERENCES</div>
+            <h3 style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: #ffffff;">Professional</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.3rem;">For scaling tech summits, expos, and global forums.</p>
+            <div class="pricing-price">$79<span>/month</span></div>
+            <ul class="pricing-features-list">
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Unlimited Global Events</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Multi-Tier Ticket Sales & Promo Codes</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Smart 2D QR Digital Badge Generation</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Attendee Matchmaking & Networking Suite</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Real-Time Financial Observability Charts</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Custom Domain & Brand Whitelabel</span>
+              </li>
+            </ul>
+            <button class="btn btn-primary btn-open-create-event" style="width: 100%;">Launch Pro Suite</button>
+          </div>
+
+          <!-- Enterprise Plan -->
+          <div class="pricing-card" data-monthly="299" data-annual="239">
+            <h3 style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;">Enterprise Summit</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.3rem;">For multi-day international arenas (10,000+ delegates).</p>
+            <div class="pricing-price">$299<span>/month</span></div>
+            <ul class="pricing-features-list">
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Everything in Pro + Dedicated Infrastructure</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>NFC Smart Badge Hardware Integration</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Enterprise SSO (Okta, Azure AD, SAML 2.0)</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Dedicated On-Site Technical Event Director</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>99.99% Financial Transaction SLA</span>
+              </li>
+            </ul>
+            <button class="btn btn-secondary" onclick="showToast('Contacting Enterprise Solutions architect...', 'info')" style="width: 100%;">Talk to Enterprise Sales</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- SPONSORS & GLOBAL ECOSYSTEM --- -->
+    <section class="sponsors-section" id="sponsors-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Global Ecosystem</div>
+          <h2 class="section-title">Trusted By World Industry Leaders</h2>
+          <p class="section-desc">Over 2,400 technology conglomerates, enterprise clouds, and venture funds sponsor events powered by Eventora.</p>
+        </div>
+
+        <!-- Platinum Tiers -->
+        <div class="sponsor-tier-wrap">
+          <div class="sponsor-tier-title">Global Platinum Partners</div>
+          <div class="sponsor-logos-row">
+            <div class="sponsor-logo-box"><span style="color: #76B900;">■</span> NVIDIA Quantum</div>
+            <div class="sponsor-logo-box"><span style="color: #4285F4;">▲</span> Google Cloud</div>
+            <div class="sponsor-logo-box"><span style="color: #635BFF;">S</span> Stripe</div>
+            <div class="sponsor-logo-box"><span style="color: #0089D6;">❖</span> Microsoft Azure</div>
+          </div>
+        </div>
+
+        <!-- Gold Tiers -->
+        <div class="sponsor-tier-wrap">
+          <div class="sponsor-tier-title">Gold & Ecosystem Sponsors</div>
+          <div class="sponsor-logos-row">
+            <div class="sponsor-logo-box">DATADOG</div>
+            <div class="sponsor-logo-box">Linear</div>
+            <div class="sponsor-logo-box">▲ Vercel</div>
+            <div class="sponsor-logo-box">Snowflake</div>
+            <div class="sponsor-logo-box">Anthropic</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <button class="btn btn-outline" onclick="showToast('Sponsorship prospectus booklet dispatched to your email.', 'success')">
+            Become an Official Event Sponsor →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- ABOUT & PLATFORM METRICS --- -->
+    <section class="about-section" id="about-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Platform Footprint</div>
+          <h2 class="section-title">Empowering the World's Best Gatherings</h2>
+          <p class="section-desc">Born out of the need for frictionless, beautiful, and hyper-reliable event infrastructure for the next generation of knowledge summits.</p>
+        </div>
+
+        <div class="about-stats-grid">
+          <div class="about-stat-card">
+            <div class="about-stat-value" data-target="12000" data-suffix="+">12,000+</div>
+            <div style="font-size: 0.938rem; color: var(--text-muted); font-weight: 600;">Events Hosted Worldwide</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-value" data-target="850000" data-suffix="+">850,000+</div>
+            <div style="font-size: 0.938rem; color: var(--text-muted); font-weight: 600;">Accredited Attendees</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-value" data-target="120" data-suffix="+">120+</div>
+            <div style="font-size: 0.938rem; color: var(--text-muted); font-weight: 600;">Countries Represented</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-value" data-target="99" data-suffix=".9%">99.9%</div>
+            <div style="font-size: 0.938rem; color: var(--text-muted); font-weight: 600;">Check-In Reliability Rate</div>
+          </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="testimonials-grid">
+          <div class="test-card">
+            <div class="test-quote">"Eventora transformed how we organize our annual conference. From multi-tier ticket sales and smart QR check-ins to attendee matchmaking, our NPS jumped by 34% in our very first year."</div>
+            <div class="test-user">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80" alt="Seraphina Vance" class="test-avatar" />
+              <div>
+                <div style="font-weight: 700; color: #ffffff;">Seraphina Vance</div>
+                <div style="font-size: 0.813rem; color: #a5b4fc;">Head of Events • Nexus Cloud Summit (6,000+ Attendees)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="test-card">
+            <div class="test-quote">"The SaaS organizer suite gives us instantaneous financial observability. We processed over $1.8M in enterprise tickets without a single dropped transaction or security friction."</div>
+            <div class="test-user">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=120&q=80" alt="Julian Thorne" class="test-avatar" />
+              <div>
+                <div style="font-weight: 700; color: #ffffff;">Julian Thorne</div>
+                <div style="font-size: 0.813rem; color: #a5b4fc;">Executive Director • European FinTech Congress</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="test-card">
+            <div class="test-quote">"As an attendee and speaker at 20+ conferences annually, Eventora's digital ticket wallet, personalized schedule builder, and networking recommendations are lightyears ahead of old legacy tools."</div>
+            <div class="test-user">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Kavita Rao" class="test-avatar" />
+              <div>
+                <div style="font-weight: 700; color: #ffffff;">Kavita Rao</div>
+                <div style="font-size: 0.813rem; color: #a5b4fc;">Founding Partner • Horizon Ventures Silicon Valley</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       ORGANIZER SAAS DASHBOARD VIEW
+       ======================================================================== -->
+  <section id="organizer-view" class="view-container">
+    <div class="dashboard-layout">
+      <!-- Sidebar -->
+      <aside class="dash-sidebar">
+        <div style="font-size: 0.75rem; color: var(--text-faint); text-transform: uppercase; font-weight: 700; padding: 0 0.8rem 0.5rem;">Organizer Suite</div>
+        <div class="dash-nav-item active">
+          <span>📊 Overview Dashboard</span>
+        </div>
+        <div class="dash-nav-item" onclick="showToast('Navigating to Live Events manager', 'info')">
+          <span>🗓️ My Hosted Events</span>
+        </div>
+        <div class="dash-nav-item btn-open-create-event">
+          <span>➕ Create New Event</span>
+        </div>
+        <div class="dash-nav-item" onclick="showToast('Attendee roster filtered', 'info')">
+          <span>👥 Attendees & Badges</span>
+        </div>
+        <div class="dash-nav-item" onclick="showToast('Ticket sales ledger opened', 'info')">
+          <span>🎟️ Tickets & Tiers</span>
+        </div>
+        <div class="dash-nav-item" onclick="showToast('Speaker directory updated', 'info')">
+          <span>🎙️ Speakers Lineup</span>
+        </div>
+        <div class="dash-nav-item" onclick="showToast('Agenda timeline builder ready', 'info')">
+          <span>⏱️ Schedule Builder</span>
+        </div>
+        <div class="dash-nav-item" onclick="showToast('Analytics drill-down exported', 'info')">
+          <span>📈 Deep Analytics</span>
+        </div>
+        <div class="dash-nav-item" onclick="showToast('Organizer settings updated', 'info')">
+          <span>⚙️ Portal Settings</span>
+        </div>
+        
+        <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle);">
+          <button class="btn btn-secondary btn-sm" onclick="document.querySelector('.mode-pill[data-view=public]').click()" style="width: 100%;">
+            ← Exit to Public Portal
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Dash Content -->
+      <div class="dash-content">
+        <!-- Header -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: #ffffff;">Organizer Observability Suite</h2>
+            <p style="color: var(--text-muted); font-size: 0.875rem;">Real-time registration throughput, gross ticket volume, and attendee demographics.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn btn-secondary btn-sm" onclick="showToast('Exporting analytics CSV report...', 'success')">
+              📥 Export CSV Report
+            </button>
+            <button class="btn btn-primary btn-sm btn-open-create-event">
+              + Host New Event
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI Metrics Row -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-title">Gross Revenue</div>
+            <div class="kpi-value">$1,248,500</div>
+            <div class="kpi-trend">↑ +18.6% vs last quarter</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-title">Tickets Issued</div>
+            <div class="kpi-value">18,450</div>
+            <div class="kpi-trend">↑ 92% capacity sold</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-title">Verified Attendees</div>
+            <div class="kpi-value">14,820</div>
+            <div class="kpi-trend">↑ 94.2% show-up rate</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-title">Conversion Rate</div>
+            <div class="kpi-value">8.4%</div>
+            <div class="kpi-trend">↑ +1.2% industry avg</div>
+          </div>
+        </div>
+
+        <!-- Charts Split Row -->
+        <div class="charts-split-grid">
+          <!-- Line Chart: Monthly Revenue & Sales -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <h4 style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: #ffffff;">Ticket Gross Volume Trajectory (2026)</h4>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Cumulative monthly pass sales processed via Eventora Secure Checkout</div>
+              </div>
+              <span class="badge badge-emerald">Live Telemetry</span>
+            </div>
+            <div class="canvas-chart-wrap">
+              <canvas id="organizer-sales-chart"></canvas>
+            </div>
+          </div>
+
+          <!-- Donut Chart: Traffic / Registration Sources -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <h4 style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: #ffffff;">Channel Distribution</h4>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Delegate acquisition source</div>
+              </div>
+            </div>
+            <div class="canvas-chart-wrap">
+              <canvas id="organizer-sources-chart"></canvas>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.4rem; margin-top: 1rem; font-size: 0.75rem;">
+              <div style="display: flex; justify-content: space-between;"><span style="color: #3b82f6;">● Direct / Organic</span><strong>42%</strong></div>
+              <div style="display: flex; justify-content: space-between;"><span style="color: #8b5cf6;">● LinkedIn & Social</span><strong>28%</strong></div>
+              <div style="display: flex; justify-content: space-between;"><span style="color: #06b6d4;">● Partner Newsletters</span><strong>18%</strong></div>
+              <div style="display: flex; justify-content: space-between;"><span style="color: #ec4899;">● Referrals & Affiliates</span><strong>12%</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Transactions Table -->
+        <div class="data-table-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: #ffffff;">Recent Pass Transactions</h4>
+            <span style="font-size: 0.813rem; color: #60a5fa; cursor: pointer;">View all 18,450 records →</span>
+          </div>
+          <table class="dash-table">
+            <thead>
+              <tr>
+                <th>Order Ref #</th>
+                <th>Delegate</th>
+                <th>Conference Event</th>
+                <th>Amount</th>
+                <th>Purchased</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="organizer-attendees-tbody">
+              <!-- Populated via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       ATTENDEE DASHBOARD ("My Tickets & Wallet")
+       ======================================================================== -->
+  <section id="attendee-view" class="view-container">
+    <div class="container" style="padding-top: 2rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: #ffffff;">Delegate Wallet & Passes</h2>
+          <p style="color: var(--text-muted); font-size: 0.938rem;">Manage your active summit credentials, personal conference agenda, and check-in QR codes.</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="document.querySelector('.mode-pill[data-view=public]').click()">
+          ← Back to Discovery
+        </button>
+      </div>
+
+      <!-- Quick Metrics Summary -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+        <div class="glass-panel" style="padding: 1.5rem;">
+          <div style="font-size: 0.75rem; color: var(--text-faint); text-transform: uppercase;">Active Passes</div>
+          <div style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: #ffffff;">2 Badges</div>
+        </div>
+        <div class="glass-panel" style="padding: 1.5rem;">
+          <div style="font-size: 0.75rem; color: var(--text-faint); text-transform: uppercase;">Saved Events</div>
+          <div style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: #ffffff;">3 Saved</div>
+        </div>
+        <div class="glass-panel" style="padding: 1.5rem;">
+          <div style="font-size: 0.75rem; color: var(--text-faint); text-transform: uppercase;">Bookmarked Sessions</div>
+          <div style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: #ffffff;">4 Keynotes</div>
+        </div>
+        <div class="glass-panel" style="padding: 1.5rem;">
+          <div style="font-size: 0.75rem; color: var(--text-faint); text-transform: uppercase;">Network Contacts</div>
+          <div style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: #34d399;">8 Connected</div>
+        </div>
+      </div>
+
+      <!-- Active Tickets List -->
+      <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 1.2rem; color: #ffffff;">Your Active Ticket Passes</h3>
+      <div id="attendee-tickets-list">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <!-- Brand Col -->
+      <div class="footer-brand">
+        <div style="display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: #ffffff;">
+          <div class="brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <span>EVENTORA</span>
+        </div>
+        <p>Powering unforgettable international events and meaningful connections worldwide with zero-latency software.</p>
+        <div style="display: flex; gap: 0.75rem;">
+          <a href="#" class="btn-icon" aria-label="Twitter">𝕏</a>
+          <a href="#" class="btn-icon" aria-label="LinkedIn">in</a>
+          <a href="#" class="btn-icon" aria-label="GitHub">gh</a>
+          <a href="#" class="btn-icon" aria-label="YouTube">yt</a>
+        </div>
+      </div>
+
+      <!-- Links: Platform -->
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#discovery-section">Explore Events</a></li>
+          <li><a href="#featured-section">Flagship Conferences</a></li>
+          <li><a href="#speakers-section">Keynote Directory</a></li>
+          <li><a href="#schedule-section">Conference Schedules</a></li>
+          <li><a href="#networking-section">Smart Matchmaking</a></li>
+        </ul>
+      </div>
+
+      <!-- Links: Organizers -->
+      <div class="footer-col">
+        <h4>Organizers</h4>
+        <ul>
+          <li><a href="javascript:void(0)" class="btn-open-create-event">Create Event</a></li>
+          <li><a href="javascript:void(0)" onclick="document.querySelector('.mode-pill[data-view=organizer-dash]').click()">Organizer SaaS Suite</a></li>
+          <li><a href="#pricing-section">Pricing & Packages</a></li>
+          <li><a href="#sponsors-section">Sponsorship Prospectus</a></li>
+          <li><a href="javascript:void(0)" onclick="showToast('Badge scanner documentation available', 'info')">Hardware Badging API</a></li>
+        </ul>
+      </div>
+
+      <!-- Links: Company -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about-section">About Eventora</a></li>
+          <li><a href="javascript:void(0)" onclick="showToast('Careers portal: 14 open roles in SF & London', 'info')">Careers (We're Hiring)</a></li>
+          <li><a href="javascript:void(0)" onclick="showToast('Press kit and logo vectors downloaded', 'info')">Press & Media Kit</a></li>
+          <li><a href="javascript:void(0)" onclick="showToast('All systems 100% operational', 'success')">System Status: 99.99%</a></li>
+          <li><a href="javascript:void(0)" onclick="showToast('Privacy Shield 2.0 & GDPR compliant', 'info')">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Strip -->
+    <div class="container footer-bottom">
+      <div>© 2026 Eventora Global Technologies, Inc. All rights reserved.</div>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="#">Security Audit</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Preferences</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MODALS & OVERLAYS
+       ======================================================================== -->
+
+  <!-- 1. EVENT DETAILS MODAL -->
+  <div class="modal-overlay" id="event-details-modal">
+    <div class="modal-window">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <div id="event-details-content">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MULTI-STEP BOOKING MODAL -->
+  <div class="modal-overlay" id="booking-modal">
+    <div class="modal-window" style="max-width: 820px;">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      
+      <!-- Stepper Header -->
+      <div class="stepper-header">
+        <div class="stepper-steps">
+          <div class="step-node active" data-step="1">
+            <span class="step-circle">1</span>
+            <span>Select Ticket</span>
+          </div>
+          <div class="step-node" data-step="2">
+            <span class="step-circle">2</span>
+            <span>Attendee Info</span>
+          </div>
+          <div class="step-node" data-step="3">
+            <span class="step-circle">3</span>
+            <span>Review & Pay</span>
+          </div>
+          <div class="step-node" data-step="4">
+            <span class="step-circle">4</span>
+            <span>Digital Pass</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step Body -->
+      <div id="booking-modal-body">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. TICKET QR SCANNER / WALLET MODAL -->
+  <div class="modal-overlay" id="ticket-preview-modal">
+    <div class="modal-window" style="max-width: 680px; padding: 2rem;">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <div id="ticket-preview-body"></div>
+    </div>
+  </div>
+
+  <!-- 4. CREATE EVENT WIZARD MODAL -->
+  <div class="modal-overlay" id="create-event-modal">
+    <div class="modal-window" style="max-width: 720px; padding: 2.5rem;">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <h3 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; color: #ffffff;">
+        Create & Host an Event
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 2rem;">
+        Publish your summit to Eventora's global discovery catalog and start selling passes instantly.
+      </p>
+
+      <form id="create-event-form">
+        <div class="form-group">
+          <label class="form-label">Event / Conference Title</label>
+          <input type="text" class="form-control" id="ce-title" placeholder="e.g. Frontier AI & Quantum Computing Summit" required />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Primary Category</label>
+            <select class="form-control" id="ce-category">
+              <option value="ai">Artificial Intelligence</option>
+              <option value="technology">Technology & Cloud</option>
+              <option value="finance">FinTech & Web3</option>
+              <option value="business">Business Leadership</option>
+              <option value="startup">Startup & VC</option>
+              <option value="design">Design & UX</option>
+              <option value="healthcare">Healthcare & Bio</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Format Type</label>
+            <select class="form-control" id="ce-format">
+              <option value="In-Person">In-Person Convention</option>
+              <option value="Online">Virtual / Live Broadcast</option>
+              <option value="Hybrid">Hybrid (Both)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Dates</label>
+            <input type="text" class="form-control" id="ce-date" placeholder="Nov 12 - 14, 2026" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Host City</label>
+            <input type="text" class="form-control" id="ce-city" placeholder="San Francisco, CA" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pass Price ($)</label>
+            <input type="number" class="form-control" id="ce-price" placeholder="299" min="0" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Short Description & Highlights</label>
+          <textarea class="form-control" id="ce-desc" rows="3" placeholder="Provide keynote themes, target delegates, and track breakdown..."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
+          <button type="button" class="btn btn-secondary" onclick="showToast('Event draft saved to your organizer vault', 'info')">Save Draft</button>
+          <button type="submit" class="btn btn-primary">Publish Event Live →</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. GLOBAL SEARCH MODAL -->
+  <div class="modal-overlay" id="global-search-modal">
+    <div class="modal-window" style="max-width: 650px; padding: 1.5rem;">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <div style="display: flex; align-items: center; gap: 0.75rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-subtle);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="global-search-input" placeholder="Search events, speakers, keynotes, cities..." style="width: 100%; font-size: 1.15rem; color: #ffffff;" />
+      </div>
+      <div id="global-search-results" style="max-height: 380px; overflow-y: auto;">
+        <div style="padding: 2rem; text-align: center; color: var(--text-faint);">
+          Type any keyword to search live conferences and speakers
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. AUTH MODAL (Sign In / Register) -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal-window" style="max-width: 460px; padding: 2.5rem;">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div class="brand-icon" style="margin: 0 auto 0.75rem; width: 44px; height: 44px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: #ffffff;">Welcome to Eventora</h3>
+        <p style="color: var(--text-muted); font-size: 0.875rem;">Access your delegate passes or organizer console</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); showToast('Signed in successfully as Alexander Hayes', 'success'); document.getElementById('auth-modal').classList.remove('active');">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-control" value="a.hayes@frontierlabs.io" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" value="••••••••••••" required />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+          Sign In to Account
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.813rem; color: var(--text-faint);">
+        Demo account pre-filled. Click "Sign In" to proceed.
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. DEMO VIDEO PREVIEW MODAL -->
+  <div class="modal-overlay" id="demo-video-modal">
+    <div class="modal-window" style="max-width: 800px; padding: 1.5rem;">
+      <button class="modal-close-btn" onclick="document.getElementById('demo-video-modal').classList.remove('active')">✕</button>
+      <div style="position: relative; padding-top: 56.25%; background: #000; border-radius: var(--radius-md); overflow: hidden;">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.8;" />
+        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.5);">
+          <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--grad-primary); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-glow); cursor: pointer;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+          <div style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-top: 1rem;">Eventora Platform Walkthrough (HD)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       FLOATING QUICK SWITCHER (Presenter Bar)
+       ======================================================================== -->
+  <div class="quick-mode-bar">
+    <div class="mode-pill active" data-view="public">
+      <span>🌐 Public Portal</span>
+    </div>
+    <div class="mode-pill" data-view="attendee-dash">
+      <span>🎟️ My Passes (Wallet)</span>
+    </div>
+    <div class="mode-pill" data-view="organizer-dash">
+      <span>📊 Organizer SaaS</span>
+    </div>
+    <div class="mode-pill btn-open-create-event" style="background: rgba(99, 102, 241, 0.25); color: #a5b4fc;">
+      <span>➕ Host Event</span>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts (Directly in root) -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
